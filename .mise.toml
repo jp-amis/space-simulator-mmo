@@ -1,0 +1,48 @@
+[tools]
+node = "22"
+pnpm = "10"
+
+[env]
+# Load workspace-local env if present.
+_.file = { path = ".env", redact = true }
+NODE_ENV = "{{ env.NODE_ENV | default(value='development') }}"
+
+# Task runner. Run `mise tasks` to list, `mise run <name>` to execute.
+# These delegate to pnpm so both `mise run dev` and `pnpm dev` work.
+[tasks.install]
+description = "Install all workspace dependencies"
+run = "pnpm install"
+
+[tasks.dev]
+description = "Run server + client together"
+run = "pnpm dev"
+
+[tasks.build]
+description = "Build all workspaces"
+run = "pnpm -r build"
+
+[tasks.test]
+description = "Run the full test suite"
+run = "pnpm test"
+
+[tasks.typecheck]
+description = "Type-check every workspace without emitting"
+run = "pnpm -r typecheck"
+
+[tasks.lint]
+description = "Lint the repo"
+run = "pnpm lint"
+
+[tasks.kill]
+description = "Kill the running server (:8080) and client (:5173)"
+run = """
+for port in 8080 5173; do
+  pids=$(lsof -ti tcp:$port 2>/dev/null || true)
+  if [ -n "$pids" ]; then kill -9 $pids && echo "killed :$port ($pids)"; else echo ":$port free"; fi
+done
+"""
+
+[tasks.sync]
+description = "Rsync the repo to the akanta dev box (respects .gitignore, excludes .git)"
+run = "rsync -av --progress --filter='merge .rsyncignore' ./ akanta@192.168.68.66:/home/akanta/space-simulator-mmo/"
+#run = "rsync -avz --progress --filter=':- .gitignore' --exclude='.git/' ./ akanta@192.168.68.66:/home/akanta/space-simulator-mmo/"

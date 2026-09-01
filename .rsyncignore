@@ -1,0 +1,26 @@
++ .env.example
++ .vscode/extensions.json
+
+- node_modules/
+- dist/
+- build/
+- coverage/
+- *.tsbuildinfo
+
+- .env
+- .env.*
+
+- .DS_Store
+- .idea/
+- .vscode/*
+
+- *.log
+- npm-debug.log*
+- pnpm-debug.log*
+
+- apps/client/.vite/
+- apps/client/playwright-report/
+- apps/client/test-results/
+- apps/client/e2e/__screenshots__/
+
+- .git/

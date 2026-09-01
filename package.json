@@ -1,0 +1,32 @@
+{
+  "name": "space-simulator-mmo",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Web-first space strategy MMO prototype (Node/TS, PixiJS, in-memory authoritative server).",
+  "type": "module",
+  "packageManager": "pnpm@10.0.0",
+  "engines": {
+    "node": ">=22"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": ["esbuild"]
+  },
+  "scripts": {
+    "dev": "pnpm --parallel --filter @space/server --filter @space/client run dev",
+    "build": "pnpm -r run build",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "pnpm -r run typecheck",
+    "lint": "eslint .",
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.0.0",
+    "@types/node": "^22.0.0",
+    "eslint": "^9.0.0",
+    "prettier": "^3.3.0",
+    "typescript": "^5.6.0",
+    "typescript-eslint": "^8.8.0",
+    "vitest": "^2.1.0"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "name": "@space/client",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -p tsconfig.json --noEmit && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "e2e": "playwright test",
+    "e2e:install": "playwright install chromium"
+  },
+  "dependencies": {
+    "@space/config": "workspace:*",
+    "@space/protocol": "workspace:*",
+    "@space/simulation": "workspace:*",
+    "pixi.js": "^8.4.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.48.0",
+    "vite": "^5.4.0"
+  }
+}

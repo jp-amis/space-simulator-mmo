@@ -1,0 +1,30 @@
+node_modules/
+dist/
+build/
+coverage/
+*.tsbuildinfo
+
+# Env / local
+.env
+.env.*
+!.env.example
+
+# Editor / OS
+.DS_Store
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# Vite
+apps/client/.vite/
+
+# Playwright
+apps/client/playwright-report/
+apps/client/test-results/
+apps/client/e2e/__screenshots__/
+
